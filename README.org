@@ -1,0 +1,4 @@
+#+TITLE: Audio Reactive LED Strip
+Real-time LED strip music visualization using Python and the arduino due.
+
+this is a streamlined version of [[https://github.com/scottlawsonbc/audio-reactive-led-strip][Scott Lawson's project]].
