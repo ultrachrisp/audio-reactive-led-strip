@@ -1,3 +1,4 @@
+
 """Settings for audio reactive LED strip"""
 from __future__ import print_function
 from __future__ import division
@@ -31,9 +32,9 @@ if DEVICE == 'pi':
     """LED signal frequency in Hz (usually 800kHz)"""
     LED_DMA = 5
     """DMA channel used for generating PWM signal (try 5)"""
-    BRIGHTNESS = 255
+    BRIGHTNESS = 96
     """Brightness of LED strip between 0 and 255"""
-    LED_INVERT = True
+    LED_INVERT = False
     """Set True if using an inverting logic level converter"""
     SOFTWARE_GAMMA_CORRECTION = True
     """Set to True because Raspberry Pi doesn't use hardware dithering"""
@@ -42,19 +43,19 @@ if DEVICE == 'blinkstick':
     SOFTWARE_GAMMA_CORRECTION = True
     """Set to True because blinkstick doesn't use hardware dithering"""
 
-USE_GUI = True
+USE_GUI = False
 """Whether or not to display a PyQtGraph GUI plot of visualization"""
 
 DISPLAY_FPS = True
 """Whether to display the FPS when running (can reduce performance)"""
 
-N_PIXELS = 298
+N_PIXELS = 178
 """Number of pixels in the LED strip (must match ESP8266 firmware)"""
 
 GAMMA_TABLE_PATH = os.path.join(os.path.dirname(__file__), 'gamma_table.npy')
 """Location of the gamma correction table"""
 
-MIC_RATE = 44100
+MIC_RATE = 44056
 """Sampling frequency of the microphone in Hz"""
 
 FPS = 20
