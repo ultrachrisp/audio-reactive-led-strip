@@ -1,6 +1,6 @@
 from __future__ import print_function
 from __future__ import division
-import time
+import time, threading
 import numpy as np
 from scipy.ndimage.filters import gaussian_filter1d
 import config
@@ -248,12 +248,31 @@ samples_per_frame = int(config.MIC_RATE / config.FPS)
 # Array containing the rolling audio sample window
 y_roll = np.random.rand(config.N_ROLLING_HISTORY, samples_per_frame) / 1e16
 
-# visualization_effect = visualize_scroll
-# visualization_effect = visualize_energy
-visualization_effect = visualize_spectrum
+# Cycling through effects
+WAIT_SECONDS = 5
+EFFECT = 0
+visualization_effect = visualize_scroll
+
+def cycleLights():
+    global EFFECT
+    global visualization_effect
+    
+    if EFFECT == 1:
+        EFFECT += 1
+        visualization_effect = visualize_energy
+    elif EFFECT >= 2:
+        EFFECT = 0
+        visualization_effect = visualize_spectrum
+    else:
+        EFFECT += 1
+        visualization_effect = visualize_scroll
+    
+    print(time.ctime(), EFFECT)
+    threading.Timer(WAIT_SECONDS, cycleLights).start()
+
+cycleLights()
+
 """Visualization effect to display on the LED strip"""
-
-
 if __name__ == '__main__':
     if config.USE_GUI:
         import pyqtgraph as pg
