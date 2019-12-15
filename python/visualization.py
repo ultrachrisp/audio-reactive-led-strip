@@ -249,26 +249,26 @@ samples_per_frame = int(config.MIC_RATE / config.FPS)
 y_roll = np.random.rand(config.N_ROLLING_HISTORY, samples_per_frame) / 1e16
 
 # Cycling through effects
-WAIT_SECONDS = 32
-EFFECT = 0
-visualization_effect = visualize_scroll
+wait_seconds = 30
+effect_counter = 0
+visualization_effect = visualize_energy
 
 def cycleLights():
-    global EFFECT
+    global effect_counter
     global visualization_effect
     
-    if EFFECT == 0:
-        EFFECT += 1
+    if effect_counter == 0:
+        effect_counter += 1
         visualization_effect = visualize_energy
-    elif EFFECT == 1:
-        EFFECT += 1
+    elif effect_counter == 1:
+        effect_counter += 1
         visualization_effect = visualize_spectrum
     else:
-        EFFECT = 0
+        effect_counter = 0
         visualization_effect = visualize_scroll
     
-    print(time.ctime(), EFFECT)
-    threading.Timer(WAIT_SECONDS, cycleLights).start()
+    print(time.ctime(), effect_counter)
+    threading.Timer(wait_seconds, cycleLights).start()
 
 cycleLights()
 
