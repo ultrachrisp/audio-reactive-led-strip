@@ -257,14 +257,14 @@ def cycleLights():
     global EFFECT
     global visualization_effect
     
-    if EFFECT == 1:
+    if EFFECT == 0:
         EFFECT += 1
         visualization_effect = visualize_energy
-    elif EFFECT >= 2:
-        EFFECT = 0
+    elif EFFECT == 1:
+        EFFECT += 1
         visualization_effect = visualize_spectrum
     else:
-        EFFECT += 1
+        EFFECT = 0
         visualization_effect = visualize_scroll
     
     print(time.ctime(), EFFECT)
