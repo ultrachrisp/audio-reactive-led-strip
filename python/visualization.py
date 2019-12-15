@@ -249,7 +249,7 @@ samples_per_frame = int(config.MIC_RATE / config.FPS)
 y_roll = np.random.rand(config.N_ROLLING_HISTORY, samples_per_frame) / 1e16
 
 # Cycling through effects
-WAIT_SECONDS = 5
+WAIT_SECONDS = 32
 EFFECT = 0
 visualization_effect = visualize_scroll
 
