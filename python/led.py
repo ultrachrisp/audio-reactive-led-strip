@@ -104,7 +104,8 @@ def _update_pi():
         # Ignore pixels if they haven't changed (saves bandwidth)
         if np.array_equal(p[:, i], _prev_pixels[:, i]):
             continue
-        strip._led_data[i] = rgb[i]
+        #strip._led_data[i] = rgb[i]
+        strip._led_data[i] = int(rgb[i])
     _prev_pixels = np.copy(p)
     strip.show()
 
@@ -149,7 +150,7 @@ def update():
 
 # Execute this file to run a LED strand test
 # If everything is working, you should see a red, green, and blue pixel scroll
-# across the LED strip continously
+# across the LED strip continuously
 if __name__ == '__main__':
     import time
     # Turn all pixels off
